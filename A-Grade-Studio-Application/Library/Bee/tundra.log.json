@@ -290,8 +290,8 @@
 {"msg":"runNodeAction","annotation":"Csc Library/Bee/artifacts/1900b0aEDbg.dag/Question1_Test.dll (+2 others)","index":168}
 {"msg":"noderesult","processed_node_count":283,"number_of_nodes_ever_queued":287,"annotation":"Csc Library/Bee/artifacts/1900b0aEDbg.dag/Question1_Test.dll (+2 others)","index":168,"exitcode":0,"outputfile":"Library\\Bee\\artifacts\\1900b0aEDbg.dag\\Question1_Test.dll"}
 {"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Question1_Test.pdb","index":265,"changes":[{"key":"InputFileList","value":["Library\\Bee\\artifacts\\1900b0aEDbg.dag\\Question1_Test.pdb"],"oldvalue":[],"dependency":"explicit"}]}
+{"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Question1_Test.pdb","index":265}
 {"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Question1_Test.dll","index":264,"changes":[{"key":"InputFileList","value":["Library\\Bee\\artifacts\\1900b0aEDbg.dag\\Question1_Test.dll"],"oldvalue":[],"dependency":"explicit"}]}
 {"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Question1_Test.dll","index":264}
-{"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Question1_Test.pdb","index":265}
 {"msg":"noderesult","processed_node_count":284,"number_of_nodes_ever_queued":287,"annotation":"CopyFiles Library/ScriptAssemblies/Question1_Test.dll","index":264,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Question1_Test.dll"}
-{"msg":"noderesult","processed_node_count":284,"number_of_nodes_ever_queued":287,"annotation":"CopyFiles Library/ScriptAssemblies/Question1_Test.pdb","index":265,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Question1_Test.pdb"}
+{"msg":"noderesult","processed_node_count":285,"number_of_nodes_ever_queued":287,"annotation":"CopyFiles Library/ScriptAssemblies/Question1_Test.pdb","index":265,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Question1_Test.pdb"}
