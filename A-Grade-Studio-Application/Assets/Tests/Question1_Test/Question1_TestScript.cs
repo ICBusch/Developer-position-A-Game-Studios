@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using Unity.Profiling;
+
 
 public class Question1_TestScript
 {
@@ -14,13 +16,14 @@ public class Question1_TestScript
     [TestCase(100000, 100001)]
     public void TestCreatedArrayForGapNumber(int arraySize, int missingNumber)
     {
-        
+
         int[] testArray = CreateArrayWithGap(arraySize, missingNumber);
 
+        int gapNumber = 1;
         List<int> intList = new List<int>();
         intList.AddRange(testArray);
         intList.Sort();
-        int gapNumber = 1;
+
         for (int i = 0; i < intList.Count; i++)
         {
             if (intList[i] < 1)
@@ -30,19 +33,42 @@ public class Question1_TestScript
             else
                 break;
         }
+
+
         Debug.Log($"Array Size: {arraySize}, Missing Number: {missingNumber}, Found Number: {gapNumber}");
-        
-        for (int i = 0; i < intList.Count; i++)
-        {
-            if (intList[i]<1 || intList[i] > arraySize)
-            {
-                Debug.Log($"{intList[i]}");
-            }
-            
-        }
-        
+
+        //for (int i = 0; i < intList.Count; i++)
+        //{
+        //    if (intList[i]<1 || intList[i] > arraySize)
+        //    {
+        //        Debug.Log($"{intList[i]}");
+        //    }
+
+        //}
+
         Assert.AreEqual(gapNumber, missingNumber);
-        
+
+    }
+
+    [Test]
+    [TestCase(450, 102)]
+    [TestCase(100000, 100000)]
+    [TestCase(50000, 1)]
+    [TestCase(100000, 100001)]
+    public void TestSolution1(int arraySize, int missingNumber)
+    {
+        System.Diagnostics.Stopwatch executionTime = new System.Diagnostics.Stopwatch();
+        executionTime.Start();
+        int[] testArray = CreateArrayWithGap(arraySize, missingNumber);
+        executionTime.Stop();
+
+        Solution1 solution1 = new Solution1();
+
+        int solutionNumber = solution1.Solution(testArray);
+
+
+        Assert.AreEqual(solutionNumber, missingNumber);
+        Debug.Log($"Execution Time: {executionTime.ElapsedMilliseconds.ToString()}");
     }
 
     /// <summary>
@@ -55,19 +81,19 @@ public class Question1_TestScript
     {
         if (size > 100000)
             Debug.LogError("Array size cannot be larger than 100,000");
-        if (gap > size+1)
+        if (gap > size + 1)
             Debug.LogError("gap location cannot be larger than the array size");
         int[] intArray = new int[size];
 
         //Create gap
         int index;
-        for (index = 0; index < (gap-1); index++)
+        for (index = 0; index < (gap - 1); index++)
         {
             intArray[index] = index + 1;
         }
 
         //Fill remaining array
-        for(;index < intArray.Length; index++)
+        for (; index < intArray.Length; index++)
         {
             int number;
             do
@@ -89,5 +115,5 @@ public class Question1_TestScript
         return intArray;
 
     }
-    
+
 }
