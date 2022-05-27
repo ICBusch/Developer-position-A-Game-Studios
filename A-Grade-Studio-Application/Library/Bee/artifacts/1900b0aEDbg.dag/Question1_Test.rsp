@@ -409,6 +409,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/Tests/Question_Tests/Question1_TestScript.cs"
 "Assets/Tests/Question_Tests/Question2_TestScript.cs"
+"Assets/Tests/Question_Tests/Question3_TestScript.cs"
 -langversion:9.0
 
 /deterministic

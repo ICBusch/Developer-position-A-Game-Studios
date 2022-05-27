@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 public class Question2_TestScript
 {
-    // A Test behaves as an ordinary method
+    
     [Test]
     [TestCase(5, 8, 6)]
     [TestCase(6, 25, -1)]
@@ -44,6 +44,13 @@ public class Question2_TestScript
         Assert.AreEqual(expectedCrossingTime, earliestTimeToCross);
     }
 
+    /// <summary>
+    /// This creates an array of leaves locations for a specific river width and a predictable expected crossing time
+    /// </summary>
+    /// <param name="riverWidth"></param>
+    /// <param name="arrayLength"></param>
+    /// <param name="expectedCrossingTime"></param>
+    /// <returns>Array of leave positions</returns>
     private int[] CreateLeavesArraywithCrossTime(int riverWidth, int arrayLength, int expectedCrossingTime)
     {
         int[] leafArray = new int[arrayLength];
