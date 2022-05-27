@@ -28,6 +28,22 @@ public class Question2_TestScript
        
     }
 
+    [Test]
+    [TestCase(5, 8, 6)]
+    [TestCase(6, 25, -1)]
+    [TestCase(7, 25, 15)]
+    [TestCase(1, 1, 0)]
+    [TestCase(10000, 100000, 25000)]
+    [TestCase(5, 10, 9)]
+    public void TestSolution2(int riverWidth, int arrayLength, int expectedCrossingTime)
+    {
+        int[] riverArray = CreateLeavesArraywithCrossTime(riverWidth, arrayLength, expectedCrossingTime);
+        Solution2 Solution = new Solution2();
+        int earliestTimeToCross = Solution.solution(riverWidth, riverArray);
+
+        Assert.AreEqual(expectedCrossingTime, earliestTimeToCross);
+    }
+
     private int[] CreateLeavesArraywithCrossTime(int riverWidth, int arrayLength, int expectedCrossingTime)
     {
         int[] leafArray = new int[arrayLength];
