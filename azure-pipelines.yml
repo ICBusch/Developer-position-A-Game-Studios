@@ -2,6 +2,12 @@
 - task: CmdLine@2
   inputs:
     script: |
+      echo Write your commands here
+      
+      echo Hello world
+- task: CmdLine@2
+  inputs:
+    script: |
       cd C:\Program Files\Unity\Hub\Editor\2021.3.5f1\
       
       start /WAIT unity.exe
