@@ -3,6 +3,14 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+variables:
+  unity.username: 'ian.busch@buschfire.ca'
+  unity.password: 'CrosbieRoxy12!'
+  runTests: false
+  unity.projectPath: '$(System.DefaultWorkingDirectory)/'
+  unity.installComponents: 'Windows, UWP, WebGL'
+
+
 trigger:
 - main
 
@@ -18,11 +26,11 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-#- task: UnityGetProjectVersionTask@1
-#  name: unitygetprojectversion
-#  displayName: Calling UnityGetProjectVersionV1 from unity-azure-pipeline-task extension
-#  inputs:
-#    unityProjectPath: '$(unity.projectPath)'
+- task: UnityGetProjectVersionTask@1
+  name: unitygetprojectversion
+  displayName: Calling UnityGetProjectVersionV1 from unity-azure-pipeline-task extension
+  inputs:
+    unityProjectPath: '$(unity.projectPath)'
 
 - task: PowerShell@2
   displayName: Install Unity
