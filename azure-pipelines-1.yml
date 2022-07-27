@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
 - script: echo Hello, world!
@@ -17,3 +17,17 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- task: UnityGetProjectVersionTask@1
+  name: unitygetprojectversion
+  displayName: Calling UnityGetProjectVersionV1 from unity-azure-pipeline-task extension
+  inputs:
+    unityProjectPath: '$(unity.projectPath)'
+
+- task: PowerShell@2
+  displayName: Install Unity
+  condition: succeeded()
+  inputs:
+    targetType: inline
+    script: Install-Module -Name UnitySetup -AllowPrerelease -Force -AcceptLicense
+
