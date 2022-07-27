@@ -7,7 +7,7 @@ variables:
 #  unity.username: 'ian.busch@buschfire.ca'
 #  unity.password: 'CrosbieRoxy12!'
   runTests: false
-  unity.projectPath: '$(System.DefaultWorkingDirectory)/'
+  unity.projectPath: "A-Grade-Studio-Application/"
   unity.installComponents: 'Windows, UWP, WebGL'
 
 
