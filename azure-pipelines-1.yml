@@ -9,7 +9,7 @@ variables:
   runTests: false
   unity.projectPath: "A-Grade-Studio-Application/"
   unity.installComponents: 'Windows, UWP, WebGL'
-
+  unity.installFolder:      'C:/Program Files/Unity/Hub/Editor/'
 
 trigger:
 - main
