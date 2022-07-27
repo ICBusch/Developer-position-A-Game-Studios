@@ -9,7 +9,7 @@ variables:
   runTests: false
   unity.projectPath: "A-Grade-Studio-Application/"
   unity.installComponents: 'Windows, UWP, WebGL'
-  unity.installFolder:      'C:/Program Files/Unity/Hub/Editor/'
+  unity.installFolder: 'C:/Program Files/Unity/Hub/Editor/'
 
 trigger:
 - main
@@ -45,3 +45,13 @@ jobs:
           targetType: inline
           script:  |
             Install-Module -Name UnitySetup -AllowPrerelease -Force -AcceptLicense
+      
+      - task: UnityActivateLicenseTask@1
+        displayName: Calling UnityActivateLicenseTask@1
+        inputs:
+          username: '$(unity.username)'
+          password: '$(unity.password)'
+          unityEditorsPathMode: 'unityHub'
+          unityProjectPath: '$(unity.projectPath)'
+          serial: ""
+        
