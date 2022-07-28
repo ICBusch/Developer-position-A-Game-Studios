@@ -46,15 +46,7 @@ jobs:
           script:  |
             Install-Module -Name UnitySetup -AllowPrerelease -Force -AcceptLicense
             echo $(unity.installFolder)
-        
-     
-      # - task: CmdLine@2
-      #   inputs:
-      #     script: |
-      #       cd "$(unity.installFolder)$(unitygetprojectversion.projectVersion)/Editor/"
-            
-      #       start /WAIT Unity.exe 
-            
+
       - task: UnityCMDTask@1
         inputs:
           unityProjectPath: '${unity.projectPath}'
