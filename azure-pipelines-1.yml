@@ -8,7 +8,8 @@ variables:
 #  unity.password: 'CrosbieRoxy12!'
   runTests: false
   unity.projectPath: "$(System.DefaultWorkingDirectory)/A-Grade-Studio-Application/"
-  unity.installComponents: 'Windows, UWP, WebGL'
+# unity.installComponents: 'Windows, UWP, WebGL'
+  unity.installComponents: 'WebGL'
   unity.installFolder: 'C:/Program Files/Unity/Hub/Editor/'
 
 trigger:
