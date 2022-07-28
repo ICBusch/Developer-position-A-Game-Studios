@@ -65,7 +65,7 @@ jobs:
         inputs:
           testMode: editMode
           unityEditorsPathMode: 'specify'
-          customUnityEditorsPath: 'Assets\Tests\Question_Tests'
+          customUnityEditorsPath: '$(unity.installFolder)'
           unityProjectPath: '$(unity.projectPath)'
 
       - script: |
