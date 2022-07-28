@@ -9,7 +9,7 @@ variables:
   runTests: false
   unity.projectPath: "$(System.DefaultWorkingDirectory)/A-Grade-Studio-Application/"
 # unity.installComponents: 'Windows, UWP, WebGL'
-  unity.installComponents: 'WebGL'
+  unity.installComponents: 'Windows, WebGL'
   unity.installFolder: 'C:/Program Files/Unity/Hub/Editor/'
 
 trigger:
@@ -22,7 +22,7 @@ jobs:
   - job: unity
     displayName: Unity Build
     variables:
-      installedCached: false
+      installCached: false
     
     condition: or(not(variables['unity.username']),  not(variables['unity.password']), false)
     steps:
@@ -35,9 +35,9 @@ jobs:
       - task: CacheBeta@0
         displayName: Check if Unity installation is cached
         inputs:
-          key: '$(Agent.OS) | "$(unitygetprojectversion.projectVersion)" | "$(unity.installComponents)"'
-          path: '"$(unity.installFolder)$(unitygetprojectversion.projectVersion)"'
-          cacheHitVar: 'installCached'
+          key: $(Agent.OS) | "$(unitygetprojectversion.projectVersion)" | "$(unity.installComponents)"
+          path: "$(unity.installFolder)$(unitygetprojectversion.projectVersion)"
+          cacheHitVar: installCached
       
       - task: PowerShell@2
         displayName: Install Unity
@@ -46,11 +46,11 @@ jobs:
           targetType: inline
           script:  |
             Install-Module -Name UnitySetup -AllowPrerelease -Force -AcceptLicense -Verbose
-            echo $(unity.installFolder)
+            echo '$(unity.installFolder)'
 
       - task: PowerShell@2
         displayName: Installing Unity Components '$(unity.installComponents)'
-        condition: and(succeeded(), ne(variables['installedCached'], true))
+        condition: and(succeeded(), ne(variables['installCached'], true))
         inputs:
           targetType: 'inline'
           script: 'Install-UnitySetupInstance -Installers (Find-UnitySetupInstaller -Version ''$(unitygetprojectversion.projectVersion)'' -Components $(unity.installComponents)) -Verbose'
@@ -60,8 +60,17 @@ jobs:
           unityProjectPath: '$(unity.projectPath)'
           cmdArgs: '-quit -nographics -username $(unity.username) -password $(unity.password)'
 
+      - task: UnityTestTask@1
+        name: unitytest
+        inputs:
+          testMode: editMode
+          unityEditorsPathMode: 'specify'
+          customUnityEditorsPath: 'Assets\Tests\Question_Tests'
+          unityProjectPath: '$(unity.projectPath)'
 
-
+      - script: |
+          echo '$(unitytest.testResultsOutputPathAndFileName)'
+      
       # - task: UnityActivateLicenseTask@1
       #   displayName: Calling UnityActivateLicenseTask@1
       #   inputs:
