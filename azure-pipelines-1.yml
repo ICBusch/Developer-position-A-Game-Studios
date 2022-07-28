@@ -7,7 +7,7 @@ variables:
 #  unity.username: 'ian.busch@buschfire.ca'
 #  unity.password: 'CrosbieRoxy12!'
   runTests: false
-  unity.projectPath: "A-Grade-Studio-Application/"
+  unity.projectPath: "$(System.DefaultWorkingDirectory)/A-Grade-Studio-Application/"
   unity.installComponents: 'Windows, UWP, WebGL'
   unity.installFolder: 'C:/Program Files/Unity/Hub/Editor/'
 
@@ -44,8 +44,15 @@ jobs:
         inputs:
           targetType: inline
           script:  |
-            Install-Module -Name UnitySetup -AllowPrerelease -Force -AcceptLicense
+            Install-Module -Name UnitySetup -AllowPrerelease -Force -AcceptLicense -Verbose
             echo $(unity.installFolder)
+
+      - task: PowerShell@2
+        displayName: Installing Unity Components '$(unity.installComponents)'
+        condition: and(succeeded(), ne(variables['installedCached'], true))
+        inputs:
+          targetType: 'inline'
+          script: 'Install-UnitySetupInstance -Installers (Find-UnitySetupInstaller -Version ''$(unitygetprojectversion.projectVersion)'' -Components $(unity.installComponents)) -Verbose'
 
       - task: UnityCMDTask@1
         inputs:
