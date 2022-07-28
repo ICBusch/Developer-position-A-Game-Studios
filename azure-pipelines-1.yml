@@ -48,12 +48,19 @@ jobs:
             echo $(unity.installFolder)
         
      
-      - task: CmdLine@2
-        inputs:
-          script: |
-            cd "$(unity.installFolder)$(unitygetprojectversion.projectVersion)/Editor/"
+      # - task: CmdLine@2
+      #   inputs:
+      #     script: |
+      #       cd "$(unity.installFolder)$(unitygetprojectversion.projectVersion)/Editor/"
             
-            start /WAIT Unity.exe -batchmode -quit -nographics -username $(unity.username) -password $(unity.password)
+      #       start /WAIT Unity.exe 
+            
+      - task: UnityCMDTask@1
+        inputs:
+          unityProjectPath: '${unity.projectPath}'
+          cmdArgs: '-batchmode -quit -nographics -username $(unity.username) -password $(unity.password)'
+
+
 
       # - task: UnityActivateLicenseTask@1
       #   displayName: Calling UnityActivateLicenseTask@1
