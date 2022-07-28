@@ -47,11 +47,14 @@ jobs:
             Install-Module -Name UnitySetup -AllowPrerelease -Force -AcceptLicense
             echo $(unity.installFolder)
         
+     
       - task: CmdLine@2
         inputs:
-          script: '"$(unity.installFolder)$(unitygetprojectversion.projectVersion)/Editor/unity.exe" -batchmode -quit -nographics -username $(unity.username) -password $(unity.password)'
-          failOnStderr: true
-          
+          script: |
+            cd "$(unity.installFolder)$(unitygetprojectversion.projectVersion)/Editor/"
+            
+            start /WAIT Unity.exe -batchmode -quit -nographics -username $(unity.username) -password $(unity.password)
+
       # - task: UnityActivateLicenseTask@1
       #   displayName: Calling UnityActivateLicenseTask@1
       #   inputs:
