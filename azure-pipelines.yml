@@ -46,7 +46,7 @@ jobs:
         inputs:
           targetType: inline
           script:  |
-            Install-Module -Name UnitySetup -Force -AcceptLicense -Verbose
+            Install-Module -Name UnitySetup
             echo '$(unity.installFolder)'
 
       - task: PowerShell@2
