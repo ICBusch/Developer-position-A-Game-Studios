@@ -9,7 +9,7 @@ variables:
   runTests: false
   unity.projectPath: "$(System.DefaultWorkingDirectory)/A-Grade-Studio-Application/"
 # unity.installComponents: 'Windows, UWP, WebGL'
-  unity.installComponents: 'Windows, WebGL'
+  unity.installComponents: 'WebGL'
   unity.installFolder: 'C:/Program Files/Unity/Hub/Editor/'
 
 trigger:
@@ -67,6 +67,7 @@ jobs:
           unityEditorsPathMode: 'specify'
           customUnityEditorsPath: '$(unity.installFolder)'
           unityProjectPath: '$(unity.projectPath)'
+          additionalCmdArgs: '-username $(unity.username) -password $(unity.password)'
 
       - script: |
           echo '$(unitytest.testResultsOutputPathAndFileName)'
