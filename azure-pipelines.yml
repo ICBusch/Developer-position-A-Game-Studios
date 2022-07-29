@@ -48,8 +48,6 @@ jobs:
           script:  |
             Install-Module UnitySetup -Force -Verbose
 
-
-
       - task: PowerShell@2
         displayName: Installing Unity Components '$(unity.installComponents)'
         condition: and(succeeded(), ne(variables['installCached'], true))
