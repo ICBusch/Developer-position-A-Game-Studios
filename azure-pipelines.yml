@@ -46,7 +46,7 @@ jobs:
         inputs:
           targetType: inline
           script:  |
-            Install-Module UnitySetup -AllowPrerelease -Scope CurrentUser -Force
+            Install-Module UnitySetup -Scope CurrentUser -Force
 
 
 
