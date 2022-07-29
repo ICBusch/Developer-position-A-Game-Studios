@@ -15,8 +15,8 @@ variables:
 trigger:
 - main
 
-pool:
-  vmImage: windows-latest
+pool: Unity Windows Agents
+  #vmImage: windows-latest
 
 jobs:
   - job: unity
