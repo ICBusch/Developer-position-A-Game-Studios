@@ -46,8 +46,8 @@ jobs:
         inputs:
           targetType: inline
           script:  |
-            Install-Module -Name UnitySetup
-            echo '$(unity.installFolder)'
+            Install-Module UnitySetup -AllowPrerelease -Scope CurrentUser -Force
+
 
       - task: PowerShell@2
         displayName: Installing Unity Components '$(unity.installComponents)'
