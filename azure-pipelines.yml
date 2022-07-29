@@ -15,7 +15,10 @@ variables:
 trigger:
 - main
 
-pool: Unity Windows Agents
+pool: 
+  name: 'Unity Windows Agents'
+  demands: 
+    - unity
   #vmImage: windows-latest
 
 jobs:
