@@ -17,8 +17,6 @@ trigger:
 
 pool: 
   name: 'Unity Windows Agents'
-  demands: 
-    - unity
   #vmImage: windows-latest
 
 jobs:
@@ -51,12 +49,12 @@ jobs:
             Install-Module -Name UnitySetup -AllowPrerelease -Force -AcceptLicense -Verbose
             echo '$(unity.installFolder)'
 
-      # - task: PowerShell@2
-      #   displayName: Installing Unity Components '$(unity.installComponents)'
-      #   condition: and(succeeded(), ne(variables['installCached'], true))
-      #   inputs:
-      #     targetType: 'inline'
-      #     script: 'Install-UnitySetupInstance -Installers (Find-UnitySetupInstaller -Version ''$(unitygetprojectversion.projectVersion)'' -Components $(unity.installComponents)) -Verbose'
+      - task: PowerShell@2
+        displayName: Installing Unity Components '$(unity.installComponents)'
+        condition: and(succeeded(), ne(variables['installCached'], true))
+        inputs:
+          targetType: 'inline'
+          script: 'Install-UnitySetupInstance -Installers (Find-UnitySetupInstaller -Version ''$(unitygetprojectversion.projectVersion)'' -Components $(unity.installComponents)) -Verbose'
 
       # - task: UnityCMDTask@1
       #   inputs:
